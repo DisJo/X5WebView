@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">X5WebView</string>
+
+    <string name="unable_to_connect_network">无法连接网络</string>
+    <string name="confirm_your_network_connection">请确认好你的网络连接稍后再试</string>
+    <string name="reload_agin">重新加载</string>
 </resources>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<jo.dis.x5web.X5WebContainerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:x5="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/x5_web_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="jo.dis.x5web.MainActivity">
-
-    <jo.dis.library.x5web.X5WebView
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</RelativeLayout>
+    x5:dom_storage_enabled="true"
+    x5:app_cache_enabled="true"
+    x5:java_script_enabled="true"
+    x5:built_in_zoom_controls="true"
+    x5:display_zoom_controls="false"
+    x5:load_with_overview_mode="true"
+    x5:use_wide_view_port="true"/>

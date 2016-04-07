@@ -1,10 +1,12 @@
 package jo.dis.library.x5web;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 
+import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -41,7 +43,24 @@ public class X5WebView extends WebView {
         initialize(attributeSet);
     }
 
+    public void addOnWebViewStateListener(WebViewStateListener webViewStateListener) {
+        webViewStateListeners.add(webViewStateListener);
+    }
+
+    public void addLoadingInterceptor(LoadingInterceptor loadingInterceptor) {
+        loadingInterceptors.add(loadingInterceptor);
+    }
+
+    public void addJavascriptInterface(WebViewJavaScriptFunction javaScriptFunction, String name) {
+        addJavascriptInterface(javaScriptFunction, name);
+    }
+
     private void initialize() {
+        if (!QbSdk.isTbsCoreInited()) {// preinit只需要调用一次，如果已经完成了初始化，那么就直接构造view
+            Intent intent = new Intent(getContext(), FirstLoadingX5Service.class);
+            getContext().startService(intent);
+        }
+
         setScrollBarStyle(WebView.SCROLLBARS_INSIDE_OVERLAY);
         setWebViewClient(new WebServiceViewClient());
         setWebChromeClient(new WebServiceChromeClient());
@@ -54,7 +73,7 @@ public class X5WebView extends WebView {
         initialize();
     }
 
-    private void setupWebSettings(TypedArray array) {
+    public void setupWebSettings(TypedArray array) {
         boolean allowContentAccess = array.getBoolean(R.styleable.x5_allow_content_access, true);
         boolean allowFileAccess = array.getBoolean(R.styleable.x5_allow_file_access, true);
         boolean allowFileAccessFromFileURLs = array.getBoolean(R.styleable.x5_allow_file_access_from_file_urls, true);

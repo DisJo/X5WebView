@@ -22,5 +22,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
-    compile files('libs/tbs_sdk_v1.5.1.1052_25436_obfs_20160317_144408.jar')
+    compile files('libs/tbs_sdk_v1.5.1.1057_25436_obfs_20160331_144900.jar')
 }
