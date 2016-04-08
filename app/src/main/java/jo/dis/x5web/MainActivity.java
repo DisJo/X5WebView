@@ -18,12 +18,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        webView = (X5WebContainerView) findViewById(R.id.x5_web_container);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        webView = (X5WebContainerView) findViewById(R.id.x5_web_container);
         webView.addLoadingInterceptor(loadingInterceptor);
         webView.addOnWebViewStateListener(webViewStateListener);
         webView.loadUrl("https://www.baidu.com");
